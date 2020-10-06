@@ -8,7 +8,7 @@ Make sure you have [Python 3.5](https://www.python.org) or higher before install
 
 
 ```bash
-# OSX
+# MacOS/Linux
 python3 -m pip install -U discord.py
 
 # Windows
@@ -18,7 +18,7 @@ py -3 -m pip install -U discord.py
 
 ## Additional Information
 
-* If on OSX, be sure to run the "Install Certificates.command" file that came bundled with your python installation before running this bot. 
+* If on MacOS, be sure to run the "Install Certificates.command" file that came bundled with your python installation before running this bot. 
 * Create a "bot.py" file in the "Utils" package and copy/paste the following code:
 ```python
 from enum import Enum

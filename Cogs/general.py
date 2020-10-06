@@ -15,10 +15,10 @@ class General(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command(name='ping')
+    @commands.command(name='PING')
     async def ping(self, message):
         """
-        A user end test command to confirm the bot's ability to respond and to measure its ping in milliseconds.
+        Check how long it takes for me to respond to a command.
         """
         before = time.monotonic()
         ping = round((time.monotonic() - before) * 1000, 1)
@@ -26,12 +26,10 @@ class General(commands.Cog):
         # Bot response
         await message.channel.send("Pong!" + " `{0}ms`".format(ping))
 
-    @commands.command(name='roll')
+    @commands.command(name='ROLL')
     async def roll(self, message, maximum=None):
         """
-        A simple command that sends a random number between one and a set maximum.
-        All custom maximums are checked to validate whether or not it is an integer before it proceeds.
-        If the custom maximum is not an integer, an error message will let the user know that it was not a valid input.
+        Rolls a number between 1 and 10 or another specified maximum.
         """
         if maximum is None:
             number = random.randint(0, 10)
@@ -46,13 +44,11 @@ class General(commands.Cog):
             # Bot response
             my_response = await message.channel.send("That is not a valid number!")
             await my_response.edit(delete_after=BotSettings.MESSAGE_DURATION.value)
-
-    @commands.command(name='flip')
+            
+    @commands.command(name='FLIP')
     async def flip(self, message):
         """
-        Generates a random integer between one and two.
-        One equalling heads and two equalling tails.
-        This will notify the user what the result is.
+        Flips a coin for heads or tails.
         """
         coin_side = random.randint(1, 2)
         if coin_side == 1:
@@ -62,7 +58,7 @@ class General(commands.Cog):
             # Bot response
             await message.channel.send("You got tails!")
 
-    @commands.command(name='say')
+    @commands.command(name='SAY')
     async def say(self, message, say=None):
         """
         Repeats the author's message.
@@ -76,30 +72,6 @@ class General(commands.Cog):
             my_response = await message.channel.send("You want me to say... nothing?")
             await my_response.edit(delete_after=BotSettings.MESSAGE_DURATION.value)
 
-    @commands.command(name='clear')
-    async def clear(self, message, amount=None):
-        """
-        Deletes a specified amount, or targetable amount, of messages.
-        """
-        if amount is None:
-            # Bot response
-            my_response = await message.channel.send("I cannot delete nothing.")
-            await my_response.edit(delete_after=BotSettings.MESSAGE_DURATION.value)
-        elif represents_int(amount):
-            amount = int(amount)
-            if amount > 100:
-                # Bot response
-                my_response = await message.channel.send("I cannot delete more than 100 messages at a time.")
-                await my_response.edit(delete_after=BotSettings.MESSAGE_DURATION.value)
-            else:
-                # Bot response
-                await message.channel.purge(limit=amount + 1)
-                my_response = await message.channel.send("Successfully cleared {0} messages.".format(amount))
-                await my_response.edit(delete_after=BotSettings.MESSAGE_DURATION.value)
-        else:
-            # Bot response
-            my_response = await message.channel.send("That is not a valid input.")
-            await my_response.edit(delete_after=BotSettings.MESSAGE_DURATION.value)
 
 def setup(client):
     client.add_cog(General(client))

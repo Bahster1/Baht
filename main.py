@@ -7,8 +7,11 @@ from Utils.tools import Color
 
 # Client initialization
 client = commands.Bot(command_prefix=BotInfo.COMMAND_PREFIX.value)
-client.remove_command('help')  
+
 # Remove the default help command so we can make our own
+"""
+client.remove_command('help')  
+"""
 
 
 @client.event
@@ -33,7 +36,7 @@ async def on_message(message):
 
 
 if __name__ == '__main__':
-    for extension in os.listdir('Cogs')[:-1]:
+    for extension in os.listdir('Cogs')[:-1]:  # Remove the last item in the list to ignore the __pycache__ directory
         try:
             client.load_extension('Cogs.{}'.format(os.path.splitext(extension)[0]))
             print('Loaded {}'.format(extension))
