@@ -1,10 +1,8 @@
-import discord
 from discord.ext import commands
 import random
 import time
 
 from Utils.config import BotSettings
-from Utils.bot import BotInfo
 from Utils.tools import represents_int
 
 
