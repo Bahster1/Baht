@@ -33,6 +33,16 @@ Baht is a general purpose Discord bot that utilizes the [discord.py](https://git
 	- Will erase a specified amount of messages in the channel. Can only be used by admins.
 - **help \<string\>**
 	- Will display the help command. Additionally, it will provide extra details of a specified command.
+- **join**
+  - Will join a voice channel you are currently in.
+- **play \<string\>**
+  - Will start playing audio from a given url.
+- **pause**
+  - If playing audio, will pause.
+- **resume**
+  - If paused, will resume playing audio.
+- **leave**
+  - Will leave a voice channel if it is in one.
 
 ## Installation
 

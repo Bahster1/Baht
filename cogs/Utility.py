@@ -17,7 +17,7 @@ class Utility(commands.Cog):
         else:
             await ctx.message.delete()
             await ctx.channel.purge(limit=int(amount))
-            await ctx.send("Successfully cleared messages.", delete_after=TEMPORARY_MESSAGE_DURATION)
+            await ctx.send("Successfully purged messages.", delete_after=TEMPORARY_MESSAGE_DURATION)
 
 
 async def setup(bot: commands.Bot):
