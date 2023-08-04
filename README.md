@@ -50,13 +50,11 @@ Make sure you have [Python 3.5](https://www.python.org) or later before installi
 
 ```bash
 # MacOS/Linux
-python3 -m pip install -U discord.py
+python3 -m pip install -U "discord.py[voice]"
 
 # Windows
-py -3 -m pip install -U discord.py
+py -3 -m pip install -U discord.py[voice]
 ```
-
-(Note: these packages do not come with voice support.)
 
 ## Configuration
 
@@ -71,8 +69,16 @@ COMMAND_PREFIX = r'YOUR PREFIX HERE'
 TEMPORARY_MESSAGE_DURATION = CUSTOM_DURATION_HERE
 ```
 
+<br>
+
+If you're not running this bot on a MacOS machine, comment out line 8 in Cogs/Music.py:
+```python
+discord.opus.load_opus("/opt/homebrew/Cellar/opus/1.4/lib/libopus.dylib")
+```
+You will not need this on Linux and Windows machines. If you do not comment out or remove this line you will get an error loading the music cog.
+
 ## Additional Information
 
-* If on MacOS, be sure to run the "Install Certificates.command" file that came bundled with your python installation before running this bot.
+* If you're on MacOS, be sure to run the "Install Certificates.command" file that came bundled with your python installation before running this bot.
 
 (Note: you can obtain this information in the [Discord developer portal](https://discordapp.com/developers/applications/) after creating a bot in your application.)
